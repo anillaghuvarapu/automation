@@ -4,17 +4,17 @@ This project demonstrates how to manage multiple environments (`dev`, `qa`, and 
 
 ---
 
-## 📁 Files
+## ðŸ“ Files
 
-- `main.tf` – Main configuration.
-- `variable.tf` – Variables declaration.
-- `dev.auto.tfvars` – Variables for `dev` environment.
-- `qa.auto.tfvars` – Variables for `qa` environment.
-- `prod.auto.tfvars` – Variables for `prod` environment.
+- `main.tf` â€“ Main configuration.
+- `variable.tf` â€“ Variables declaration.
+- `dev.auto.tfvars` â€“ Variables for `dev` environment.
+- `qa.auto.tfvars` â€“ Variables for `qa` environment.
+- `prod.auto.tfvars` â€“ Variables for `prod` environment.
 
 ---
 
-## 🚀 Getting Started
+## ðŸš€ Getting Started
 
 ### Step 1: Initialize Terraform
 
@@ -22,7 +22,11 @@ This project demonstrates how to manage multiple environments (`dev`, `qa`, and 
 terraform init
 ```
 
-### Step 2: Create Workspaces
+---
+
+## ðŸŒ Creating and Managing Workspaces
+
+### Create Workspaces
 
 ```bash
 terraform workspace new dev
@@ -30,26 +34,33 @@ terraform workspace new qa
 terraform workspace new prod
 ```
 
-### Step 3: Switch Workspace
+### List All Workspaces
+
+```bash
+terraform workspace list
+```
+
+### Switch Between Workspaces
 
 ```bash
 terraform workspace select dev   # or qa / prod
 ```
 
-### Step 4: Apply
+---
+
+## âš™ï¸ Apply Configuration
+
+Terraform will automatically pick the correct `.auto.tfvars` file based on the current workspace.
 
 ```bash
 terraform apply -auto-approve
 ```
 
-Terraform will automatically pick:
-- `dev.auto.tfvars` for `dev`
-- `qa.auto.tfvars` for `qa`
-- `prod.auto.tfvars` for `prod`
+---
 
-### Step 5: Destroy
+## ðŸ§¹ Destroy Infrastructure
 
-To destroy infrastructure in the current workspace:
+Destroy resources in the current workspace:
 
 ```bash
 terraform destroy -auto-approve
@@ -57,24 +68,49 @@ terraform destroy -auto-approve
 
 ---
 
-## 📌 Notes
+## âœ‹ Manual tfvars File Usage (Alternative Method)
 
-- Workspaces isolate state files.
-- Ideal for managing different environments.
-- No need to manually specify `.tfvars` files when using `.auto.tfvars`.
+Instead of using `.auto.tfvars`, you can manually specify a `.tfvars` file:
+
+```bash
+terraform apply -var-file="dev.auto.tfvars"
+terraform apply -var-file="qa.auto.tfvars"
+terraform apply -var-file="prod.auto.tfvars"
+```
+
+To destroy using a specific vars file:
+
+```bash
+terraform destroy -var-file="dev.auto.tfvars" -auto-approve
+```
+
+> âœ… This method works independently of the workspace.
 
 ---
 
-## 🔄 Switching Between Environments
+## ðŸ“Œ Notes
+
+- Terraform Workspaces allow isolated state files for multiple environments.
+- `.auto.tfvars` files are loaded automatically without needing the `-var-file` flag.
+- Manually using `-var-file` provides more control but requires you to specify the right file.
+
+---
+
+## ðŸ”„ Switching Between Environments (Recap)
 
 ```bash
-terraform workspace list
 terraform workspace select qa
 terraform apply -auto-approve
 ```
 
+Or manually:
+
+```bash
+terraform apply -var-file="qa.auto.tfvars"
+```
+
 ---
 
-## 👤 Author
+## ðŸ‘¤ Author
 
-Maintained by [Your Name]. Created for demoing safe and organized infrastructure provisioning using Terraform.
+Maintained by [Your Name]. Created to demonstrate safe and organized multi-environment infrastructure provisioning using Terraform.
