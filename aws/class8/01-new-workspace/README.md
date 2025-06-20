@@ -4,17 +4,17 @@ This project demonstrates how to manage multiple environments (`dev`, `qa`, and 
 
 ---
 
-## ðŸ“ Files
+## 📁 Files
 
-- `main.tf` â€“ Main configuration.
-- `variable.tf` â€“ Variables declaration.
-- `dev.auto.tfvars` â€“ Variables for `dev` environment.
-- `qa.auto.tfvars` â€“ Variables for `qa` environment.
-- `prod.auto.tfvars` â€“ Variables for `prod` environment.
+- `main.tf` – Main configuration.
+- `variable.tf` – Variables declaration.
+- `dev.auto.tfvars` – Variables for `dev` environment.
+- `qa.auto.tfvars` – Variables for `qa` environment.
+- `prod.auto.tfvars` – Variables for `prod` environment.
 
 ---
 
-## ðŸš€ Getting Started
+## 🚀 Getting Started
 
 ### Step 1: Initialize Terraform
 
@@ -24,7 +24,7 @@ terraform init
 
 ---
 
-## ðŸŒ Creating and Managing Workspaces
+## 🌐 Creating and Managing Workspaces
 
 ### Create Workspaces
 
@@ -48,7 +48,7 @@ terraform workspace select dev   # or qa / prod
 
 ---
 
-## âš™ï¸ Apply Configuration
+## ⚙️ Apply Configuration
 
 Terraform will automatically pick the correct `.auto.tfvars` file based on the current workspace.
 
@@ -58,7 +58,7 @@ terraform apply -auto-approve
 
 ---
 
-## ðŸ§¹ Destroy Infrastructure
+## 🧹 Destroy Infrastructure
 
 Destroy resources in the current workspace:
 
@@ -68,7 +68,7 @@ terraform destroy -auto-approve
 
 ---
 
-## âœ‹ Manual tfvars File Usage (Alternative Method)
+## ✋ Manual tfvars File Usage (Alternative Method)
 
 Instead of using `.auto.tfvars`, you can manually specify a `.tfvars` file:
 
@@ -84,11 +84,11 @@ To destroy using a specific vars file:
 terraform destroy -var-file="dev.auto.tfvars" -auto-approve
 ```
 
-> âœ… This method works independently of the workspace.
+> ✅ This method works independently of the workspace.
 
 ---
 
-## ðŸ“Œ Notes
+## 📌 Notes
 
 - Terraform Workspaces allow isolated state files for multiple environments.
 - `.auto.tfvars` files are loaded automatically without needing the `-var-file` flag.
@@ -96,7 +96,7 @@ terraform destroy -var-file="dev.auto.tfvars" -auto-approve
 
 ---
 
-## ðŸ”„ Switching Between Environments (Recap)
+## 🔄 Switching Between Environments (Recap)
 
 ```bash
 terraform workspace select qa
@@ -111,6 +111,6 @@ terraform apply -var-file="qa.auto.tfvars"
 
 ---
 
-## ðŸ‘¤ Author
+## 👤 Author
 
 Maintained by [Your Name]. Created to demonstrate safe and organized multi-environment infrastructure provisioning using Terraform.
