@@ -1,32 +1,16 @@
-terraform {
-  required_providers {
-    aws = {
-      source  = "hashicorp/aws"
-      version = "~> 3.27"
-    }
-  }
-  required_version = ">= 0.14.9"
-}
 provider "aws" {
-  profile = "default"
-  region  = "us-east-1"
+  region = var.aws_region
 }
 
-variable "environment" {
-  type    = string
-  default = "dev"
-}
+resource "aws_instance" "workspace_ec2" {
+  ami                    = var.ami_id
+  instance_type          = var.instance_type
+  subnet_id              = var.subnet_id
+  key_name               = var.key_name
+  vpc_security_group_ids = var.vpc_security_group_ids
 
-resource "aws_iam_policy" "s3_policy" {
-  name = "s3_policy_for_${var.environment}"
-
-  policy = jsonencode({
-    "Version" : "2012-10-17",
-    "Statement" : [
-      {
-        "Effect" : "Allow",
-        "Action" : "s3:GetObject",
-        "Resource" : "*"
-    }]
-  })
+  tags = {
+    Name      = "${terraform.workspace}-EC2"
+    Workspace = terraform.workspace
+  }
 }
