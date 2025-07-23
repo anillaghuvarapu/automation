@@ -1,10 +1,10 @@
 locals {
-  bucket_name = "mygrowth-cbc-platform-usecases"
+  bucket_name = "primitive-s3-bucket"
   env         = "dev"
 }
 
 
-resource "aws_s3_bucket" "my_test_bucket" {
+resource "aws_s3_bucket" "my_bucket_usecases" {
   bucket = local.bucket_name
 
   tags = {
