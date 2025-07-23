@@ -1,12 +1,12 @@
 resource "aws_instance" "My-Webserver" {
 
-  ami                    = "ami-0a313d6098716f372"
-  instance_type          = "t2.micro"
+  ami           = "ami-0a313d6098716f372"
+  instance_type = "t2.micro"
   tags = {
-    Name = "My-Webserver"
+    Name          = "My-Webserver"
     Creation_Time = "$Date"
   }
-  key_name  = "careerbytecode"
+  key_name  = "hostkeys"
   user_data = <<EOF
 #!/bin/bash -xe
 exec > >(tee /var/log/user-data.log|logger -t user-data -s 2>/dev/console) 2>&1
