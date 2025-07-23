@@ -4,7 +4,8 @@ output "instance_public_ip" {
 }
 
 output "no_of_cpu_cores" {
-  value = aws_instance.ec2_example.cpu_core_count
+  description = "Number of CPU cores in the EC2 instance"
+  value       = aws_instance.ec2_example.cpu_options[0].core_count
 }
 
 
