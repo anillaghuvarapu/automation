@@ -4,7 +4,7 @@ variable "aws_region" {
 }
 
 
-variable "vpc-nithya" {
+variable "vpc-cidr" {
   default = "20.0.0.0/16"
 }
 
