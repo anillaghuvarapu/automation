@@ -9,7 +9,7 @@ output "image_id" {
   value       = aws_instance.web_server.ami
 }
 output "no_of_cpu_cores" {
-  value = aws_instance.web_server.cpu_core_count
+  value = aws_instance.web_server.cpu_options[0].core_count
 }
 
 output "host_id" {
