@@ -1,10 +1,9 @@
-resource "aws_dynamodb_table" "terraform_locks" {
-  name         = "terraform-up-and-running-locks"
+resource "aws_dynamodb_table" "name" {
+  name         = "platform-dynamodb-table"
   billing_mode = "PAY_PER_REQUEST"
-  hash_key     = "LockID"
-
+  hash_key     = "ID"
   attribute {
-    name = "LockID"
+    name = "ID"
     type = "S"
   }
 }
