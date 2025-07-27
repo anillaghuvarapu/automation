@@ -8,8 +8,9 @@ output "public_ip_address" {
 
 output "admin_password" {
   value     = azurerm_windows_virtual_machine.main.admin_password
+  sensitive = true
 }
 
 output "computer_name" {
-  value     = azurerm_windows_virtual_machine.main.computer_name
+  value = azurerm_windows_virtual_machine.main.computer_name
 }

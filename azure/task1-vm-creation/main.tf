@@ -24,7 +24,8 @@ resource "azurerm_public_ip" "my_terraform_public_ip" {
   name                = "${random_pet.prefix.id}-public-ip"
   location            = azurerm_resource_group.rg.location
   resource_group_name = azurerm_resource_group.rg.name
-  allocation_method   = "Dynamic"
+  allocation_method   = "Static" #change to "dynamic" if sku is not "Standard"
+  sku                 = "Standard"
 }
 
 # Create Network Security Group and rules
@@ -95,7 +96,7 @@ resource "azurerm_windows_virtual_machine" "main" {
   location              = azurerm_resource_group.rg.location
   resource_group_name   = azurerm_resource_group.rg.name
   network_interface_ids = [azurerm_network_interface.my_terraform_nic.id]
-  size                  = "Standard_DS1_v2"
+  size                  = "Standard_D2s_v3" # Adjust size as needed
 
   os_disk {
     name                 = "myOsDisk"
